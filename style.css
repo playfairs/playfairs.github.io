@@ -2,7 +2,7 @@
     --primary-color: #ffffff;
     --primary-dark: #e5e5e5;
     --secondary-color: #cccccc;
-    --background: #000000;
+    --background: #141220;
     --surface: #1a1a1a;
     --text-primary: #ffffff;
     --text-secondary: #999999;
@@ -190,18 +190,21 @@ body {
     }
     
     .links {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
         gap: 0.8rem;
-        max-width: 400px;
+        max-width: 90vw;
+        margin: 0 auto;
     }
     
     .links a {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
         padding: 0.8rem;
+        width: 100%;
     }
     
     .links a.github {
-        grid-column: span 2;
+        width: 100%;
     }
 }
 
@@ -225,18 +228,21 @@ body {
     }
     
     .links {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 0.6rem;
-        max-width: 280px;
+        max-width: 95vw;
+        margin: 0 auto;
     }
     
     .links a {
-        font-size: 0.85rem;
+        font-size: 1rem;
         padding: 0.7rem;
+        width: 100%;
     }
     
     .links a.github {
-        grid-column: span 1;
+        width: 100%;
     }
 }
 

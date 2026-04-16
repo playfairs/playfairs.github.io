@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         body {
             overflow-x: hidden;
-            background: #000000;
+            background: #141220;
         }
     `;
     document.head.appendChild(style);
