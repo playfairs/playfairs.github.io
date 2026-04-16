@@ -73,7 +73,7 @@ body {
     font-size: 4rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--text-secondary));
+    background: linear-gradient(135deg, #ffffff, #b8b8b8, #808080);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -87,11 +87,13 @@ body {
 }
 
 .links {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
-    max-width: 600px;
+    width: 100%;
+    max-width: 90vw;
     margin: 0 auto;
+    justify-content: center;
 }
 
 .links a {
@@ -112,6 +114,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
 .links a i {
