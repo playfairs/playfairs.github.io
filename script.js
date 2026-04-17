@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const aboutTexts = [
+        'hi, I make stuff sometimes',
+        'developer, creator, occasional content creator or whatever',
+        'just a dumb femboy who likes to code useless stuff',
+        'compiling useless shit',
+        'idk why you are reading these',
+        'hiya',
+        'nyah :3',
+        'probably sleeping',
+        'im a cute little femboy :3',
+        'blah blah blah description, reload me'
+    ];
+    
+    let lastText = '';
+    
+    function getRandomText() {
+        let newText;
+        do {
+            newText = aboutTexts[Math.floor(Math.random() * aboutTexts.length)];
+        } while (newText === lastText);
+        
+        lastText = newText;
+        return newText;
+    }
+    
+    const aboutElement = document.querySelector('.hero-content p');
+    const randomText = getRandomText();
+    
+    aboutElement.style.opacity = '0';
+    setTimeout(() => {
+        aboutElement.textContent = randomText;
+        aboutElement.style.opacity = '1';
+    }, 300);
     const linksContainer = document.querySelector('.links');
     const links = Array.from(linksContainer.querySelectorAll('a'));
     
