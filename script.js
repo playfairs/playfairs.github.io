@@ -1,15 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const aboutTexts = [
-        'hi, I make stuff sometimes',
-        'developer, creator, occasional content creator or whatever',
-        'just a dumb femboy who likes to code useless stuff',
-        'compiling useless shit',
-        'idk why you are reading these',
-        'hiya',
-        'nyah :3',
-        'probably sleeping',
-        'im a cute little femboy :3',
-        'blah blah blah description, reload me'
+        'get up off your knees'
     ];
     
     let lastText = '';
