@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const aboutTexts = [
-        'get up off your knees'
+        "I'm so fucking tired"
     ];
     
     let lastText = '';
