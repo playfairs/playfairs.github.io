@@ -43,10 +43,10 @@ body {
 }
 
 .avatar {
-    width: 100px;
-    height: 100px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 1.15);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition: var(--transition);
     animation: avatarFloat 3s ease-in-out infinite;
