@@ -23,40 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         aboutElement.textContent = randomText;
         aboutElement.style.opacity = '1';
     }, 300);
-    const linksContainer = document.querySelector('.links');
-    const links = Array.from(linksContainer.querySelectorAll('a'));
-    
-    const linkData = links.map(link => {
-        const href = link.getAttribute('href');
-        const text = link.textContent.trim();
-        
-        let platform = '';
-        let username = '';
-        
-        if (href.includes('discord.com')) platform = 'Discord';
-        else if (href.includes('github.com')) platform = 'GitHub';
-        else if (href.includes('gitlab.com')) platform = 'GitLab';
-        else if (href.includes('pinterest.com')) platform = 'Pinterest';
-        else if (href.includes('t.me')) platform = 'Telegram';
-        else if (href.includes('tiktok.com')) platform = 'TikTok';
-        else if (href.includes('twitter.com')) platform = 'Twitter';
-        
-        const match = text.match(/\/(.+)/);
-        username = match ? match[1].trim() : text;
-        
-        return { element: link, platform, username, href };
-    });
-    
-    linkData.sort((a, b) => {
-        const platformCompare = a.platform.localeCompare(b.platform);
-        if (platformCompare !== 0) return platformCompare;
-        return a.username.localeCompare(b.username);
-    });
-    
-    linksContainer.innerHTML = '';
-    linkData.forEach(data => {
-        linksContainer.appendChild(data.element);
-    });
     const linkElements = document.querySelectorAll('.links a');
     
     linkElements.forEach(link => {
@@ -152,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .star {
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
-        
+
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -161,20 +127,93 @@ document.addEventListener('DOMContentLoaded', function() {
             animation: ripple-animation 0.6s ease-out;
             pointer-events: none;
         }
-        
+
         @keyframes ripple-animation {
             to {
                 transform: scale(4);
                 opacity: 0;
             }
         }
-        
-        body {
-            overflow-x: hidden;
-            background: #141220;
-        }
     `;
     document.head.appendChild(style);
+
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.querySelector('.play-pause');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressFill = document.querySelector('.progress-fill');
+    const currentTimeEl = document.querySelector('.time .current');
+    const durationEl = document.querySelector('.duration');
+
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function updateProgress() {
+        if (audio.duration) {
+            const percentage = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = percentage + '%';
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        }
+    }
+
+    function togglePlay() {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+
+    function updatePlayButton() {
+        const icon = playPauseBtn.querySelector('i');
+        icon.className = audio.paused ? 'fas fa-play' : 'fas fa-pause';
+    }
+
+    function seek(e) {
+        if (audio.readyState >= 2) {
+            const rect = progressBar.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            audio.currentTime = (percentage / 100) * audio.duration;
+        }
+    }
+
+    function skipBack() {
+        audio.currentTime = Math.max(0, audio.currentTime - 10);
+    }
+
+    function skipForward() {
+        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+    }
+
+    if (audio && playPauseBtn) {
+        audio.addEventListener('timeupdate', updateProgress);
+        audio.addEventListener('play', updatePlayButton);
+        audio.addEventListener('pause', updatePlayButton);
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+        audio.addEventListener('canplay', () => {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+        audio.addEventListener('ended', () => {
+            audio.currentTime = 0;
+            updateProgress();
+        });
+
+        playPauseBtn.addEventListener('click', togglePlay);
+        prevBtn.addEventListener('click', skipBack);
+        nextBtn.addEventListener('click', skipForward);
+
+        currentTimeEl.textContent = '0:00';
+        durationEl.textContent = 'Loading...';
+        
+        audio.load();
+    }
 });
 
 console.log('%c  hi, what are you doing here ', 'background: #000000; color: #ffffff; font-size: 16px; padding: 10px; border-radius: 5px;');
