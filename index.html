@@ -14,7 +14,9 @@
             <section class="hero">
                 <div class="hero-content">
                     <div class="avatar-container">
-                        <img src="https://github.com/playfairs.png" alt="GitHub Avatar" class="avatar">
+                        <a href="https://github.com/playfairs" target="_blank" class="avatar-link">
+                            <img src="https://github.com/playfairs.png" alt="GitHub Avatar" class="avatar">
+                        </a>
                     </div>
                     <h1>playfairs</h1>
                     <p>hi, do you like my shitty placeholder</p>
@@ -33,30 +35,40 @@
             </section>
 
             <div class="music-player">
-                <audio id="audio-player" src="https://raw.githubusercontent.com/playfairs/playfairs.github.io/main/assets/dream-sweet.mp3" preload="metadata"></audio>
-                <div class="track-info">
-                    <a href="https://open.spotify.com/track/3RznzRnsl8mzP63l4AF2M7?si=f4cd9ebc66e34466" target="_blank" class="track-name">Dream Sweet in Sea Major</a>
-                    <span class="artist-name">Miracle Musical</span>
-                </div>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
+                <audio id="audio-player" src="https://raw.githubusercontent.com/playfairs/playfairs.github.io/main/assets/dream-sweet.mp3" preload="metadata" loop></audio>
+                <div class="player-layout">
+                    <div class="album-art-large">
+                        <a href="https://open.spotify.com/track/3RznzRnsl8mzP63l4AF2M7?si=f4cd9ebc66e34466" target="_blank">
+                            <img src="https://i.scdn.co/image/ab67616d00001e02b3d0bf02a5fb2f676c748432" alt="Dream Sweet in Sea Major Album Art" class="album-cover-large">
+                        </a>
                     </div>
-                    <div class="time">
-                        <span class="current">0:00</span>
-                        <span class="duration">0:00</span>
+                    <div class="player-controls">
+                        <div class="track-info">
+                            <a href="https://open.spotify.com/track/3RznzRnsl8mzP63l4AF2M7?si=f4cd9ebc66e34466" target="_blank" class="track-name">Dream Sweet in Sea Major</a>
+                            <a href="https://open.spotify.com/artist/2FRXiAz5Uz78LLLSwEUhLt?si=EV9dxPIeSiygBlz7HBMDRw" target="_blank" class="artist-name">Miracle Musical</a>
+                            <a href="https://open.spotify.com/album/1CbtBQqibzdxhmpiLD7vzN?si=7NHHVtNJRamkRtjRIW8kFw" target="_blank" class="album-name">Hawaii: Part II</a>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div class="time">
+                                <span class="current">0:00</span>
+                                <span class="duration">0:00</span>
+                            </div>
+                        </div>
+                        <div class="controls">
+                            <button class="control-btn prev" aria-label="Previous">
+                                <i class="fas fa-backward"></i>
+                            </button>
+                            <button class="control-btn play-pause" aria-label="Play/Pause">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="control-btn next" aria-label="Next">
+                                <i class="fas fa-forward"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="controls">
-                    <button class="control-btn prev" aria-label="Previous">
-                        <i class="fas fa-backward"></i>
-                    </button>
-                    <button class="control-btn play-pause" aria-label="Play/Pause">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button class="control-btn next" aria-label="Next">
-                        <i class="fas fa-forward"></i>
-                    </button>
                 </div>
             </div>
         </div>
