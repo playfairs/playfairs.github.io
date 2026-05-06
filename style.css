@@ -24,7 +24,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg-primary) url('assets/saturn.png') no-repeat center center fixed;
+    background: var(--bg-primary) url('https://raw.githubusercontent.com/playfairs/playfairs.github.io/main/assets/saturn.png') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-primary);
     line-height: 1.5;
